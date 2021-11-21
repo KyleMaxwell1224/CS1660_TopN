@@ -62,14 +62,12 @@ public class TopN {
         public void cleanup(Context context) throws IOException,
                                            InterruptedException
         {
-            int topFiveAdded = 0;
 
             for (Map.Entry<String, Integer> entry : entriesSortedByValues(topFiveSet)) 
             {
                 String word = entry.getKey();
                 Integer value = entry.getValue();
                 context.write(new Text(word), new IntWritable(value));
-                topFiveAdded++;
             }
         }        
     }
